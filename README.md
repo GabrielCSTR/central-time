@@ -1,5 +1,12 @@
 # Central Time - Aplicação de Dados de Futebol
 
+[![Vue.js](https://img.shields.io/badge/Vue.js-3.5.13-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![API SportMetrics](https://img.shields.io/badge/API-SportMetrics-00D4AA?style=for-the-badge&logo=api&logoColor=white)](https://sportmetrics.com.br/)
+
+> 🚀 **Demonstração da API SportMetrics** - Uma API brasileira completa para dados de futebol
+
 Uma aplicação Vue.js para buscar e exibir informações detalhadas sobre times de futebol, incluindo estatísticas, jogadores e informações do estádio.
 
 ## 🚀 Tecnologias
@@ -7,11 +14,25 @@ Uma aplicação Vue.js para buscar e exibir informações detalhadas sobre times
 - **Frontend**: Vue 3 + TypeScript + Vite
 - **Backend**: Vercel Functions (Serverless)
 - **Styling**: Tailwind CSS
-- **API Externa**: SportMetrics API (api.sportmetrics.com.br)
+- **API Externa**: [SportMetrics API](https://sportmetrics.com.br/) (api.sportmetrics.com.br)
 - **Estado**: Pinia
 - **Roteamento**: Vue Router 4
 - **HTTP Client**: Axios
 - **Linting**: ESLint + Prettier
+
+## 🔥 Destaque: API SportMetrics
+
+Este projeto demonstra o poder da **API SportMetrics** - uma API brasileira completa para dados de futebol. A API oferece:
+
+- ✅ **Dados de Times**: Informações completas, logos, história
+- ✅ **Estatísticas**: Performance, vitórias, empates, derrotas
+- ✅ **Jogadores**: Elenco atual com estatísticas individuais
+- ✅ **Estádios**: Capacidade, localização, fotos
+- ✅ **Competições**: Brasileirão, Copa do Brasil, Libertadores
+- ✅ **Gratuita**: 100 requisições por dia na versão gratuita
+- ✅ **Documentação**: API bem documentada e fácil de usar
+
+**[🔗 Acesse a API SportMetrics](https://sportmetrics.com.br/)**
 
 ## 📋 Pré-requisitos
 
