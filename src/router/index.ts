@@ -14,6 +14,11 @@ const router = createRouter({
       name: 'time',
       component: () => import('../views/TeamView.vue'),
     },
+    {
+      path: '/api-demo',
+      name: 'api-demo',
+      component: () => import('../views/ApiDemoView.vue'),
+    },
   ],
 })
 

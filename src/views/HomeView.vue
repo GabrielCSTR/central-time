@@ -35,6 +35,10 @@ const handleKeyPress = (event: KeyboardEvent) => {
     searchTeam()
   }
 }
+
+const goToApiDemo = () => {
+  router.push('/api-demo')
+}
 </script>
 
 <template>
@@ -156,6 +160,18 @@ const handleKeyPress = (event: KeyboardEvent) => {
               Ano de fundação e informações históricas do clube
             </p>
           </div>
+        </div>
+
+        <!-- API Demo CTA -->
+        <div class="mt-12 pt-8 border-t border-secondary-200">
+          <h3 class="text-2xl font-bold text-secondary-800 mb-4">Conheça a API SportMetrics</h3>
+          <p class="text-lg text-secondary-600 mb-6">
+            Esta aplicação é alimentada pela API SportMetrics - a API brasileira mais completa para
+            dados de futebol
+          </p>
+          <button @click="goToApiDemo" class="btn-accent text-lg px-8 py-4">
+            🚀 Ver Demonstração da API
+          </button>
         </div>
       </div>
     </div>
