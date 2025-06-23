@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import stadiumBg from '@/assets/stadium-bg.jpg'
 
 const router = useRouter()
 const searchTerm = ref('')
@@ -45,7 +46,7 @@ const handleKeyPress = (event: KeyboardEvent) => {
       >
         <div
           class="absolute inset-0 bg-cover bg-center"
-          style="background-image: url('/src/assets/stadium-bg.jpg')"
+          :style="{ backgroundImage: `url(${stadiumBg})` }"
         ></div>
         <div class="absolute inset-0 bg-secondary-900 bg-opacity-60"></div>
 
