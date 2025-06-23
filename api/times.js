@@ -101,7 +101,7 @@ export default async function handler(req, res) {
     try {
       const fixturesOptions = {
         method: 'GET',
-        url: `https://api.sportmetrics.com.br/api/v1/${team.time_id}/proximos-jogos`,
+        url: `https://api.sportmetrics.com.br/api/v1/times/${team.time_id}/proximos-jogos`,
         params: {
           time_id: teamId,
         },
