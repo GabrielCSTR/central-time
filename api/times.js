@@ -103,7 +103,7 @@ export default async function handler(req, res) {
         name: team.nome,
         country: team.pais,
         founded: team.fundacao,
-        logo: `https://media.api-sports.io/football/teams/${team.time_id}.png`,
+        logo: `https://cdn.sportmetrics.com.br/football/teams/${team.time_id}.png`,
       },
       venue: {
         id: team.estadio.id,
@@ -111,7 +111,7 @@ export default async function handler(req, res) {
         city: team.estadio.cidade,
         capacity: team.estadio.capacidade,
         surface: team.estadio.superficie,
-        image: `https://media.api-sports.io/football/venues/${team.estadio.id}.png`,
+        image: `https://cdn.sportmetrics.com.br/football/venues/${team.estadio.id}.png`,
       },
       statistics: statistics
         ? {
