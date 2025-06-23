@@ -7,14 +7,18 @@ Uma aplicação Vue.js para buscar e exibir informações detalhadas sobre times
 - **Frontend**: Vue 3 + TypeScript + Vite
 - **Backend**: Vercel Functions (Serverless)
 - **Styling**: Tailwind CSS
-- **API Externa**: Football API (api-football.com)
+- **API Externa**: SportMetrics API (api.sportmetrics.com.br)
+- **Estado**: Pinia
+- **Roteamento**: Vue Router 4
+- **HTTP Client**: Axios
+- **Linting**: ESLint + Prettier
 
 ## 📋 Pré-requisitos
 
-- Node.js 18+
+- Node.js 18+ (recomendado: Node.js 22)
 - npm ou yarn
 - Conta no Vercel
-- Chave da API do Football API
+- Chave da API do SportMetrics
 
 ## 🛠️ Instalação
 
@@ -44,16 +48,21 @@ cp .env.example .env.local
 4. **Execute em desenvolvimento**
 
 ```bash
+# Desenvolvimento local (apenas frontend)
 npm run dev
-# ou
-yarn dev
+
+# Desenvolvimento completo (frontend + API serverless)
+npm run vercel-dev
+
+# Desenvolvimento limpo (mata portas e inicia)
+npm run dev-clean
 ```
 
 ## 🔧 Configuração da API
 
 ### Obter chave da API
 
-1. Acesse [https://www.api-football.com/](https://www.api-football.com/)
+1. Acesse [https://sportmetrics.com.br/](https://sportmetrics.com.br/)
 2. Registre-se para uma conta gratuita
 3. Obtenha sua chave de API no dashboard
 4. A versão gratuita permite 100 requisições por dia
@@ -65,7 +74,7 @@ yarn dev
 Crie um arquivo `.env.local`:
 
 ```env
-API_FOOTBALL_KEY=sua_chave_api_aqui
+VIT_API_FOOTBALL_KEY=sua_chave_api_aqui
 ```
 
 #### Produção (Vercel)
@@ -74,7 +83,7 @@ API_FOOTBALL_KEY=sua_chave_api_aqui
 2. Vá para o seu projeto
 3. Clique em "Settings" > "Environment Variables"
 4. Adicione:
-   - **Name**: `API_FOOTBALL_KEY`
+   - **Name**: `VIT_API_FOOTBALL_KEY`
    - **Value**: sua chave da API
    - **Environment**: Production
 
@@ -103,22 +112,67 @@ vercel --prod
 
 ```
 central-time/
-├── api/                    # Funções serverless do Vercel
-│   └── team/
-│       └── [teamName].mjs  # API para buscar dados do time
+├── api/                   # Funções serverless do Vercel
+│    └── times.js          # API para buscar dados do time
 ├── src/
-│   ├── components/         # Componentes Vue
 │   ├── views/             # Páginas da aplicação
+│   │   ├── HomeView.vue   # Página inicial com busca
+│   │   └── TeamView.vue   # Página de detalhes do time
 │   ├── config/            # Configurações (API, etc.)
+│   │   └── api.ts         # Configuração da API
 │   ├── interfaces/        # Tipos TypeScript
-│   └── stores/            # Estado global (Pinia)
+│   │   └── index.ts       # Interfaces do projeto
+│   ├── stores/            # Estado global (Pinia)
+│   │   └── counter.ts     # Store de exemplo
+│   ├── router/            # Configuração de rotas
+│   │   └── index.ts       # Rotas da aplicação
+│   ├── assets/            # Recursos estáticos
+│   │   ├── main.css       # Estilos globais
+│   │   ├── base.css       # Estilos base
+│   │   └── stadium-bg.jpg # Imagem de fundo
+│   ├── App.vue            # Componente raiz
+│   └── main.ts            # Ponto de entrada
+├── public/                # Arquivos públicos
+├── .vscode/               # Configurações do VS Code
+├── .vercel/               # Configurações do Vercel
 ├── vercel.json            # Configuração do Vercel
-└── vite.config.ts         # Configuração do Vite
+├── vite.config.ts         # Configuração do Vite
+├── tailwind.config.js     # Configuração do Tailwind
+├── tsconfig.json          # Configuração do TypeScript
+├── eslint.config.ts       # Configuração do ESLint
+├── .prettierrc.json       # Configuração do Prettier
+├── env.example            # Exemplo de variáveis de ambiente
+├── DEPLOY.md              # Guia detalhado de deploy
+└── ENV_SETUP.md           # Guia de configuração de ambiente
 ```
+
+## 📄 Arquivos Importantes
+
+### Configuração
+
+- **`.env.local`**: Variáveis de ambiente locais (não versionado)
+- **`env.example`**: Exemplo de variáveis de ambiente
+- **`vercel.json`**: Configuração do Vercel (funções, rewrites, headers)
+- **`vite.config.ts`**: Configuração do Vite
+- **`tailwind.config.js`**: Configuração do Tailwind CSS
+- **`tsconfig.json`**: Configuração do TypeScript
+
+### Desenvolvimento
+
+- **`.gitignore`**: Arquivos ignorados pelo Git
+- **`.prettierrc.json`**: Configuração de formatação
+- **`eslint.config.ts`**: Configuração de linting
+- **`test-api.js`**: Script de teste da API
+
+### Documentação
+
+- **`README.md`**: Documentação principal
+- **`DEPLOY.md`**: Guia detalhado de deploy
+- **`ENV_SETUP.md`**: Configuração de ambiente
 
 ## 🔌 Endpoints da API
 
-### GET /api/team/[teamName]
+### GET /api/times?teamName=[teamName]
 
 Busca informações completas de um time.
 
@@ -138,18 +192,26 @@ Busca informações completas de um time.
     "logo": "https://..."
   },
   "venue": {
+    "id": 456,
     "name": "Allianz Parque",
     "city": "São Paulo",
-    "capacity": 43713
+    "capacity": 43713,
+    "surface": "Grama",
+    "image": "https://..."
   },
   "statistics": {
     "league": "Brasileirão",
     "season": 2024,
+    "form": "WWDLW",
     "fixtures": {
-      "played": 20,
-      "wins": 15,
-      "draws": 3,
-      "loses": 2
+      "played": { "total": 20 },
+      "wins": { "total": 15 },
+      "draws": { "total": 3 },
+      "loses": { "total": 2 }
+    },
+    "goals": {
+      "for": { "total": 45 },
+      "against": { "total": 18 }
     }
   },
   "players": [...]
@@ -162,19 +224,25 @@ Busca informações completas de um time.
 - ✅ Informações detalhadas do time
 - ✅ Dados do estádio
 - ✅ Estatísticas da temporada
-- ✅ Lista de jogadores
+- ✅ Lista de jogadores com estatísticas
 - ✅ Interface responsiva
 - ✅ Loading states e tratamento de erros
+- ✅ Times populares na página inicial
+- ✅ Navegação por rotas
 
 ## 🛠️ Scripts Disponíveis
 
 ```bash
-npm run dev          # Desenvolvimento local
-npm run build        # Build para produção
-npm run preview      # Preview do build
-npm run lint         # Lint do código
-npm run format       # Formatação do código
-npm run deploy       # Deploy no Vercel
+npm run dev              # Desenvolvimento local (apenas frontend)
+npm run vercel-dev       # Desenvolvimento completo (frontend + API)
+npm run dev-clean        # Desenvolvimento limpo (mata portas e inicia)
+npm run build            # Build para produção
+npm run preview          # Preview do build
+npm run type-check       # Verificação de tipos TypeScript
+npm run lint             # Lint do código
+npm run format           # Formatação do código
+npm run deploy           # Deploy no Vercel
+npm run test-api         # Teste da API local
 ```
 
 ## 🔍 Como Usar
@@ -182,13 +250,14 @@ npm run deploy       # Deploy no Vercel
 1. Acesse a aplicação
 2. Digite o nome de um time no campo de busca
 3. Clique em "Buscar" ou pressione Enter
-4. Visualize as informações detalhadas do time
+4. Ou clique em um dos times populares na página inicial
+5. Visualize as informações detalhadas do time
 
 ## 🐛 Solução de Problemas
 
 ### Erro 500 - Chave da API não configurada
 
-- Verifique se a variável `API_FOOTBALL_KEY` está configurada
+- Verifique se a variável `VIT_API_FOOTBALL_KEY` está configurada
 - No Vercel: Settings > Environment Variables
 
 ### Erro 429 - Limite de requisições excedido
@@ -201,6 +270,11 @@ npm run deploy       # Deploy no Vercel
 - Tente nomes diferentes (ex: "palmeiras" em vez de "Palmeiras")
 - Verifique se o time existe na base de dados da API
 
+### Erro de CORS
+
+- Verifique se está usando `npm run vercel-dev` para desenvolvimento completo
+- As configurações CORS estão no `vercel.json`
+
 ## 📝 Licença
 
 Este projeto está sob a licença MIT.
@@ -212,3 +286,8 @@ Este projeto está sob a licença MIT.
 3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
+
+## 📚 Documentação Adicional
+
+- [Guia de Deploy](./DEPLOY.md) - Instruções detalhadas para deploy
+- [Configuração de Ambiente](./ENV_SETUP.md) - Guia de variáveis de ambiente
