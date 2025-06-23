@@ -282,6 +282,65 @@ const getResultClass = (result: string) => {
           </div>
         </div>
 
+        <!-- Upcoming Fixtures Section -->
+        <div v-if="teamData.upcoming_fixtures" class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Próximos Jogos</h2>
+          <div class="space-y-6">
+            <div
+              v-for="fixture in teamData.upcoming_fixtures"
+              :key="fixture.id"
+              class="bg-gray-50 border rounded-xl p-4 transition-shadow hover:shadow-lg"
+            >
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <img :src="fixture.liga.logo" :alt="fixture.liga.nome" class="w-6 h-6" />
+                  <div>
+                    <p class="font-bold text-gray-700">{{ fixture.liga.nome }}</p>
+                    <p class="text-xs text-gray-500">{{ fixture.liga.rodada }}</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <p class="font-semibold text-sm text-gray-800">{{ fixture.data.formatada }}</p>
+                  <p class="text-xs text-gray-500">{{ fixture.estadio.nome }}</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-center gap-4 py-4">
+                <div class="flex-1 text-center">
+                  <img
+                    :src="fixture.times.mandante.logo"
+                    :alt="fixture.times.mandante.nome"
+                    class="w-12 h-12 mx-auto mb-2"
+                  />
+                  <p class="font-semibold text-lg">{{ fixture.times.mandante.nome }}</p>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[80px]">
+                  <div class="text-2xl font-bold text-gray-800">
+                    {{ fixture.placar.mandante }}
+                    <span class="text-gray-400">x</span>
+                    {{ fixture.placar.visitante }}
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">{{ fixture.status.longo }}</div>
+                </div>
+                <div class="flex-1 text-center">
+                  <img
+                    :src="fixture.times.visitante.logo"
+                    :alt="fixture.times.visitante.nome"
+                    class="w-12 h-12 mx-auto mb-2"
+                  />
+                  <p class="font-semibold text-lg">{{ fixture.times.visitante.nome }}</p>
+                </div>
+              </div>
+              <div
+                class="flex flex-wrap justify-between items-center text-xs text-gray-500 mt-2 gap-2"
+              >
+                <div><span class="font-semibold">Árbitro:</span> {{ fixture.arbitro }}</div>
+                <div><span class="font-semibold">Cidade:</span> {{ fixture.estadio.cidade }}</div>
+                <div><span class="font-semibold">Status:</span> {{ fixture.status.curto }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Players Section -->
         <div
           v-if="teamData.players && teamData.players.length > 0"

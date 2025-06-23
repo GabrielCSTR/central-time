@@ -177,6 +177,70 @@ export interface Player {
   estatisticas: EstatisticasJogador[]
 }
 
+export interface UpcomingFixture {
+  id: number
+  data: {
+    iso: string
+    formatada: string
+    timestamp: number
+  }
+  arbitro: string
+  estadio: {
+    id: number | null
+    nome: string
+    cidade: string
+  }
+  status: {
+    longo: string
+    curto: string
+    minutos: number
+    extra: number | null
+  }
+  liga: {
+    id: number
+    nome: string
+    pais: string
+    logo: string
+    bandeira: string | null
+    temporada: number
+    rodada: string
+  }
+  times: {
+    mandante: {
+      id: number
+      nome: string
+      logo: string
+      vencedor: boolean | null
+    }
+    visitante: {
+      id: number
+      nome: string
+      logo: string
+      vencedor: boolean | null
+    }
+  }
+  placar: {
+    mandante: number
+    visitante: number
+    intervalo: {
+      mandante: number
+      visitante: number
+    }
+    final: {
+      mandante: number
+      visitante: number
+    }
+    prorrogacao: {
+      mandante: number | null
+      visitante: number | null
+    }
+    penaltis: {
+      mandante: number | null
+      visitante: number | null
+    }
+  }
+}
+
 export interface TeamData {
   team: Team
   venue: Venue
@@ -196,4 +260,5 @@ export interface TeamData {
     }
   }
   players?: Player[]
+  upcoming_fixtures?: UpcomingFixture[]
 }

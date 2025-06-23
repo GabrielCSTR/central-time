@@ -96,6 +96,26 @@ export default async function handler(req, res) {
       console.log('Jogadores não disponíveis para este time')
     }
 
+    // Buscar próximos jogos
+    let upcomingFixtures = []
+    try {
+      const fixturesOptions = {
+        method: 'GET',
+        url: `https://api.sportmetrics.com.br/api/v1/${team.time_id}/proximos-jogos`,
+        params: {
+          time_id: teamId,
+          next: 10,
+        },
+        headers: { Authorization: `Bearer ${apiKey}` },
+      }
+      const fixturesResponse = await axios.request(fixturesOptions)
+      if (fixturesResponse.data?.length > 0) {
+        upcomingFixtures = fixturesResponse.data
+      }
+    } catch {
+      console.log('Próximos jogos não disponíveis')
+    }
+
     // Montar resposta completa
     const completeTeamData = {
       team: {
@@ -131,6 +151,7 @@ export default async function handler(req, res) {
           }
         : null,
       players: players.length > 0 ? players : null,
+      upcoming_fixtures: upcomingFixtures.length > 0 ? upcomingFixtures : null,
     }
 
     res.status(200).json(completeTeamData)
