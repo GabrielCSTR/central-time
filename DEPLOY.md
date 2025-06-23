@@ -5,14 +5,14 @@ Este guia explica como fazer deploy da aplicação Central Time no Vercel.
 ## 📋 Pré-requisitos
 
 - Conta no [Vercel](https://vercel.com)
-- Conta no [API-Football](https://www.api-football.com/)
+- Conta no [SportMetrics](https://sportmetrics.com.br/)
 - Repositório Git configurado
 
 ## 🔧 Configuração Inicial
 
 ### 1. Obter Chave da API
 
-1. Acesse [https://www.api-football.com/](https://www.api-football.com/)
+1. Acesse [https://sportmetrics.com.br/](https://sportmetrics.com.br/)
 2. Registre-se para uma conta gratuita
 3. Obtenha sua chave de API no dashboard
 4. A versão gratuita permite 100 requisições por dia
@@ -25,7 +25,7 @@ Este guia explica como fazer deploy da aplicação Central Time no Vercel.
 2. Vá para seu projeto
 3. Clique em "Settings" > "Environment Variables"
 4. Adicione:
-   - **Name**: `API_FOOTBALL_KEY`
+   - **Name**: `VIT_API_FOOTBALL_KEY`
    - **Value**: sua chave da API
    - **Environment**: Production, Preview, Development
 
@@ -83,7 +83,7 @@ vercel --prod
 Após o deploy, teste a API:
 
 ```bash
-curl https://seu-projeto.vercel.app/api/time/palmeiras
+curl https://seu-projeto.vercel.app/api/times?teamName=palmeiras
 ```
 
 ### 2. Verificar Logs
@@ -104,11 +104,11 @@ No dashboard do Vercel:
 
 ### Erro 500 - API Key não configurada
 
-**Sintoma**: Erro 500 ao acessar `/api/time/[teamName]`
+**Sintoma**: Erro 500 ao acessar `/api/times?teamName=[teamName]`
 
 **Solução**:
 
-1. Verifique se `API_FOOTBALL_KEY` está configurada no Vercel
+1. Verifique se `VIT_API_FOOTBALL_KEY` está configurada no Vercel
 2. Reinicie o deploy após adicionar a variável
 
 ### Erro 429 - Limite de requisições
@@ -194,7 +194,7 @@ vercel --prod
 ## 📞 Suporte
 
 - **Vercel Docs**: [vercel.com/docs](https://vercel.com/docs)
-- **API-Football Docs**: [api-football.com/documentation](https://www.api-football.com/documentation)
+- **API-SportMetrics Docs**: [sportmetrics.com.br/documentation](https://sportmetrics.com.br/documentation)
 - **Issues**: Abra uma issue no repositório
 
 ---
