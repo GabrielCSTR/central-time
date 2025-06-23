@@ -77,7 +77,7 @@ export default async function handler(req, res) {
     try {
       const playersOptions = {
         method: 'GET',
-        url: 'https://api.sportmetrics.com.br/api/v1/jogador/estatisticas',
+        url: 'https://api.sportmetrics.com.br/api/v1/atletas/estatisticas',
         params: {
           time_id: +teamId,
           competicao_id: 71, // Brasileirão
