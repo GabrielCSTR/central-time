@@ -104,11 +104,12 @@ export default async function handler(req, res) {
         url: `https://api.sportmetrics.com.br/api/v1/${team.time_id}/proximos-jogos`,
         params: {
           time_id: teamId,
-          next: 10,
         },
         headers: { Authorization: `Bearer ${apiKey}` },
       }
       const fixturesResponse = await axios.request(fixturesOptions)
+      console.log('Próximos jogos:', fixturesResponse.data)
+
       if (fixturesResponse.data?.length > 0) {
         upcomingFixtures = fixturesResponse.data
       }
