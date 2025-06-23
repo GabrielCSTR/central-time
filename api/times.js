@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Nome do time é obrigatório' })
   }
 
-  const apiKey = process.env.VIT_API_FOOTBALL_KEY || 'test_c970afc61a551be4063c9e18b6e6d238'
+  const apiKey = process.env.VIT_API_FOOTBALL_KEY
 
   if (!apiKey) {
     return res.status(500).json({
