@@ -2,9 +2,7 @@
 const isDevelopment = import.meta.env.DEV
 
 // URL base da API
-export const API_BASE_URL = isDevelopment
-  ? 'http://localhost:3000' // Para desenvolvimento local
-  : '' // Para produção (Vercel), usa URL relativa
+export const API_BASE_URL = isDevelopment ? 'http://localhost:3000' : ''
 
 // Função para construir URLs da API
 export const buildApiUrl = (endpoint: string): string => {

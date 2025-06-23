@@ -4,34 +4,27 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { API_ENDPOINTS } from '@/config/api'
 
-// 'ref' cria variáveis reativas. Quando o valor delas muda, o HTML atualiza automaticamente.
-const teamData = ref<TeamData | null>(null) // Armazenará os dados do time vindos da API
-const loading = ref(true) // Controla a exibição da mensagem "Carregando..."
-const error = ref<string | null>(null) // Armazena mensagens de erro
+const teamData = ref<TeamData | null>(null)
+const loading = ref(true)
+const error = ref<string | null>(null)
 
-// 'useRoute' nos dá acesso às informações da rota atual, incluindo os parâmetros da URL.
 const route = useRoute()
 
-// 'onMounted' é um "gancho de ciclo de vida". O código dentro dele roda assim que o componente é montado na tela.
 onMounted(async () => {
-  // Pegamos o nome do time do parâmetro da URL (ex: /time/palmeiras -> 'palmeiras')
   const teamName = route.params.nomeDoTime as string
 
   try {
-    // Fazemos a chamada para a nossa API usando a configuração dinâmica
     const response = await fetch(API_ENDPOINTS.team(teamName))
-    console.log('RESPONSE', response)
-
     if (!response.ok) {
       throw new Error('Time não encontrado ou erro no servidor.')
     }
     const data = await response.json()
-    teamData.value = data // Atualizamos a variável reativa com os dados recebidos
+    teamData.value = data
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido'
-    error.value = errorMessage // Em caso de erro, guardamos a mensagem
+    error.value = errorMessage
   } finally {
-    loading.value = false // Independentemente de sucesso ou erro, paramos de carregar
+    loading.value = false
   }
 })
 
@@ -139,7 +132,7 @@ const getResultClass = (result: string) => {
                 </h3>
                 <div class="flex justify-center gap-1.5 mt-4">
                   <span
-                    v-for="(result, index) in teamData.statistics.form.slice(-12)"
+                    v-for="(result, index) in teamData.statistics.form?.slice(-12)"
                     :key="index"
                     :class="[
                       'w-full h-full rounded-full flex items-center justify-center text-xs font-bold',
@@ -344,7 +337,6 @@ const getResultClass = (result: string) => {
 </template>
 
 <style scoped>
-/* Adiciona um tamanho de fonte minúsculo para os totais de gols nos períodos */
 .text-xxs {
   font-size: 0.65rem;
   line-height: 1;
