@@ -43,20 +43,26 @@ const getResultClass = (result: string) => {
 </script>
 
 <template>
-  <div class="bg-gray-50 min-h-screen">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+  <div class="bg-gray-50 min-h-[calc(100vh-150px)]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 h-full">
       <!-- Loading State -->
-      <div v-if="loading" class="text-center py-20">
-        <div
-          class="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"
-        ></div>
+      <div
+        v-if="loading"
+        class="flex flex-col items-center justify-center h-full text-center py-20"
+      >
+        <img src="/favicon.svg" alt="Loading..." class="w-16 h-16 animate-spin mb-6" />
         <p class="text-xl text-gray-600">
-          Carregando informações sobre {{ route.params.nomeDoTime }}...
+          Carregando informações sobre
+          <span class="font-bold text-primary-600">{{ route.params.nomeDoTime }}</span
+          >...
         </p>
       </div>
 
       <!-- Error State -->
-      <div v-else-if="error" class="text-center py-20">
+      <div
+        v-else-if="error"
+        class="flex flex-col items-center justify-center h-full text-center py-20"
+      >
         <div class="bg-white p-10 rounded-lg shadow-md max-w-md mx-auto">
           <h2 class="text-3xl font-bold text-red-600 mb-4">Erro ao Carregar Time</h2>
           <p class="text-gray-600 mb-8">{{ error }}</p>

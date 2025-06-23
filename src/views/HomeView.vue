@@ -135,26 +135,97 @@ const goToApiDemo = () => {
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           <div class="card-feature">
-            <div class="card-feature-icon bg-primary-100 text-primary-600">🏟️</div>
+            <div class="card-feature-icon bg-primary-100 text-primary-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-12 h-12"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 18v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12" />
+                <path d="M4 12h16" />
+                <path d="M4 9h16" />
+                <path d="M8 21l4 -12l4 12" />
+              </svg>
+            </div>
             <h3 class="card-feature-title">Informações do Estádio</h3>
             <p class="card-feature-description">
               Capacidade, localização e fotos do estádio do time
             </p>
           </div>
           <div class="card-feature">
-            <div class="card-feature-icon bg-accent-100 text-accent-600">📊</div>
+            <div class="card-feature-icon bg-accent-100 text-accent-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-12 h-12"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                />
+              </svg>
+            </div>
             <h3 class="card-feature-title">Estatísticas</h3>
             <p class="card-feature-description">
               Dados da temporada atual, vitórias, empates e derrotas
             </p>
           </div>
           <div class="card-feature">
-            <div class="card-feature-icon bg-primary-100 text-primary-600">⚽</div>
+            <div class="card-feature-icon bg-primary-100 text-primary-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-12 h-12"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7l4.76 2.75l-.005 5.5l-4.755 2.75l-4.755 -2.75l.005 -5.5z" />
+                <path d="M12 7v-4" />
+                <path d="M16.76 9.75l3.44 -2" />
+                <path d="M16.76 15.25l3.44 2" />
+                <path d="M7.24 15.25l-3.44 2" />
+                <path d="M7.24 9.75l-3.44 -2" />
+              </svg>
+            </div>
             <h3 class="card-feature-title">Jogadores</h3>
             <p class="card-feature-description">Elenco atual com posições e nacionalidades</p>
           </div>
           <div class="card-feature">
-            <div class="card-feature-icon bg-accent-100 text-accent-600">🏆</div>
+            <div class="card-feature-icon bg-accent-100 text-accent-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-12 h-12"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+                <line x1="7" y1="4" x2="17" y2="4" />
+                <path d="M17 4v8a5 5 0 0 1 -10 0v-8" />
+                <circle cx="5" cy="9" r="2" />
+                <circle cx="19" cy="9" r="2" />
+              </svg>
+            </div>
             <h3 class="card-feature-title">História</h3>
             <p class="card-feature-description">
               Ano de fundação e informações históricas do clube
@@ -169,8 +240,25 @@ const goToApiDemo = () => {
             Esta aplicação é alimentada pela API SportMetrics - a API brasileira mais completa para
             dados de futebol
           </p>
-          <button @click="goToApiDemo" class="btn-accent text-lg px-8 py-4">
-            🚀 Ver Demonstração da API
+          <button
+            @click="goToApiDemo"
+            class="btn-accent text-lg px-8 py-4 inline-flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 mr-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a6 6 0 01-2.56 5.84m-2.28 2.28a6 6 0 01-7.38-5.84m2.56-5.84a6 6 0 015.84-2.56m-2.28-2.28a6 6 0 01-7.38 5.84m9.94-9.94L9.5 9.5M19 5l-4.5 4.5"
+              />
+            </svg>
+            Ver Demonstração da API
           </button>
         </div>
       </div>

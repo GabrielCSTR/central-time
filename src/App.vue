@@ -10,10 +10,10 @@ import { RouterView } from 'vue-router'
           to="/"
           class="flex items-center gap-3 text-secondary-800 font-bold text-xl transition-transform hover:scale-105"
         >
-          <span class="text-3xl">⚽</span>
+          <img src="/favicon.svg" alt="Central Time Logo" class="w-8 h-8" />
           <span
-            class="bg-gradient-to-r from-primary-600 to-primary-400 text-transparent bg-clip-text"
-            >Central do Futebol</span
+            class="bg-gradient-to-r from-primary-600 to-primary-400 text-transparent bg-clip-text uppercase"
+            >Central Time</span
           >
         </router-link>
         <nav class="flex gap-2 items-center">
@@ -23,13 +23,12 @@ import { RouterView } from 'vue-router'
           >
             Início
           </router-link>
-          <a
-            href="https://www.api-football.com/documentation-v3"
-            target="_blank"
+          <router-link
+            to="/api-demo"
             class="text-secondary-600 font-medium px-4 py-2 rounded-lg transition-all hover:text-accent-600 hover:bg-accent-100"
           >
-            API Docs
-          </a>
+            Demonstração da API
+          </router-link>
         </nav>
       </div>
     </header>
@@ -73,15 +72,43 @@ import { RouterView } from 'vue-router'
                 href="https://sportmetrics.com.br/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="block text-accent-400 hover:text-accent-300 transition-colors"
+                class="flex items-center text-accent-400 hover:text-accent-300 transition-colors"
               >
-                🌐 Acessar API SportMetrics
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 01-9-9m9-9a9 9 0 00-9-9"
+                  />
+                </svg>
+                Acessar API SportMetrics
               </a>
               <a
                 href="/api-demo"
-                class="block text-accent-400 hover:text-accent-300 transition-colors"
+                class="flex items-center text-accent-400 hover:text-accent-300 transition-colors"
               >
-                📚 Ver Demonstração
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6.253v11.494M12 6.253L6.26 4.847M12 6.253L17.74 7.66M6.26 4.847l-3.027 1.25m3.027-1.25L6.26 2.347M17.74 7.66l2.817 6.947M17.74 7.66L20.557 4.847m-8.297 12.9L6.26 14.933m5.74 1.414L17.74 14.933M6.26 14.933l-3.027-1.25m3.027 1.25L6.26 17.653m11.48-2.72L20.557 18.92m-8.297-4.27L12 17.653"
+                  />
+                </svg>
+                Ver Demonstração
               </a>
             </div>
           </div>
@@ -90,13 +117,47 @@ import { RouterView } from 'vue-router'
             <h3 class="text-xl font-bold mb-4">Links Rápidos</h3>
             <ul class="space-y-2">
               <li>
-                <a href="/" class="text-secondary-300 hover:text-white transition-colors">
-                  🏠 Página Inicial
+                <a
+                  href="/"
+                  class="flex items-center text-secondary-300 hover:text-white transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                  </svg>
+                  Página Inicial
                 </a>
               </li>
               <li>
-                <a href="/api-demo" class="text-secondary-300 hover:text-white transition-colors">
-                  🚀 Demonstração da API
+                <a
+                  href="/api-demo"
+                  class="flex items-center text-secondary-300 hover:text-white transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a6 6 0 01-2.56 5.84m-2.28 2.28a6 6 0 01-7.38-5.84m2.56-5.84a6 6 0 015.84-2.56m-2.28-2.28a6 6 0 01-7.38 5.84m9.94-9.94L9.5 9.5M19 5l-4.5 4.5"
+                    />
+                  </svg>
+                  Demonstração da API
                 </a>
               </li>
               <li>
@@ -104,9 +165,23 @@ import { RouterView } from 'vue-router'
                   href="https://sportmetrics.com.br/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-secondary-300 hover:text-white transition-colors"
+                  class="flex items-center text-secondary-300 hover:text-white transition-colors"
                 >
-                  📖 Documentação
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M16.5 3.75V16.5m-1.875-1.875l-1.875 1.875m1.875-1.875L12.75 6l-1.875 1.875m3.75 3.75L12 12.375m-3.75-3.75L6 12.375m3.75-3.75L7.875 6M6.375 16.5h11.25"
+                    />
+                  </svg>
+                  Documentação
                 </a>
               </li>
             </ul>
@@ -114,13 +189,26 @@ import { RouterView } from 'vue-router'
         </div>
 
         <div class="border-t border-secondary-700 mt-8 pt-8 text-center">
-          <p class="text-secondary-400">
-            © 2024 Central Time. Desenvolvido com ❤️ para demonstrar a
+          <p class="flex items-center justify-center text-secondary-400">
+            © 2024 Central Time. Desenvolvido com
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mx-1 text-red-500"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            para demonstrar a
             <a
               href="https://sportmetrics.com.br/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-accent-400 hover:text-accent-300"
+              class="text-accent-400 hover:text-accent-300 ml-1"
             >
               API SportMetrics
             </a>
