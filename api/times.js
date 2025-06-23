@@ -24,7 +24,8 @@ export default async function handler(req, res) {
 
   if (!apiKey) {
     return res.status(500).json({
-      message: 'Chave da API não configurada. Configure a variável de ambiente API_FOOTBALL_KEY.',
+      message:
+        'Chave da API não configurada. Configure a variável de ambiente VIT_API_FOOTBALL_KEY.',
     })
   }
 
